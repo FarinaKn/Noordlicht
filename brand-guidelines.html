@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Noordlicht – Brand Guidelines</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+<style>
+@font-face {
+  font-family: 'Noordlicht';
+  src: url('NOORDLICHT.otf') format('opentype');
+  font-display: swap;
+}
+
+:root {
+  --blue:      #28387f;
+  --blue-dark: #1e2c6a;
+  --bg:        #F5F5F2;
+  --white:     #ffffff;
+  --text:      #1A1A1A;
+  --muted:     #6b6b68;
+  --line:      #e2e2de;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); }
+
+/* ── LAYOUT ── */
+.page { max-width: 1100px; margin: 0 auto; padding: 0 60px 120px; }
+
+/* ── COVER ── */
+.cover {
+  background: var(--blue);
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  justify-content: space-between;
+  padding: 80px;
+  position: relative; overflow: hidden;
+}
+.cover::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 80% 20%, rgba(255,255,255,.05) 0%, transparent 60%);
+}
+.cover-top { display: flex; justify-content: space-between; align-items: flex-start; position: relative; z-index: 1; }
+.cover-label { font-size: .68rem; letter-spacing: .28em; text-transform: uppercase; color: rgba(255,255,255,.35); font-weight: 500; }
+.cover-version { font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.25); }
+.cover-center { position: relative; z-index: 1; }
+.cover-img { width: 180px; margin-bottom: 40px; filter: brightness(0) invert(1); }
+.cover-title { font-family: 'Noordlicht', sans-serif; font-size: clamp(5rem, 10vw, 9rem); color: #fff; line-height: .9; letter-spacing: -.01em; margin-bottom: 20px; }
+.cover-sub { font-size: .9rem; letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.4); }
+.cover-bottom { display: flex; justify-content: space-between; align-items: flex-end; position: relative; z-index: 1; }
+.cover-desc { font-size: .82rem; color: rgba(255,255,255,.35); font-weight: 300; line-height: 1.7; max-width: 320px; }
+.cover-date { font-size: .72rem; color: rgba(255,255,255,.2); letter-spacing: .12em; }
+
+/* ── TOC ── */
+.toc-page { padding: 100px 80px; background: var(--white); }
+.toc-label { font-size: .65rem; letter-spacing: .25em; text-transform: uppercase; color: var(--blue); font-weight: 600; margin-bottom: 48px; display: flex; align-items: center; gap: 10px; }
+.toc-label::after { content: ''; display: block; width: 36px; height: 1px; background: var(--blue); }
+.toc-title { font-family: 'Noordlicht', sans-serif; font-size: 3.5rem; color: var(--blue); margin-bottom: 64px; line-height: 1; }
+.toc-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+.toc-item { display: flex; align-items: center; justify-content: space-between; padding: 22px 0; border-bottom: 1px solid var(--line); }
+.toc-item:nth-child(odd) { padding-right: 60px; border-right: 1px solid var(--line); }
+.toc-item:nth-child(even) { padding-left: 60px; }
+.toc-num { font-size: .65rem; color: var(--blue); opacity: .4; font-weight: 600; letter-spacing: .1em; margin-right: 16px; }
+.toc-name { font-size: .92rem; font-weight: 500; color: var(--text); flex: 1; }
+.toc-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--line); }
+
+/* ── SECTION HEADER ── */
+.chapter { padding: 100px 0 0; }
+.chapter-num { font-size: .62rem; letter-spacing: .25em; text-transform: uppercase; color: var(--blue); opacity: .45; font-weight: 600; margin-bottom: 10px; }
+.chapter-title { font-family: 'Noordlicht', sans-serif; font-size: clamp(2.5rem, 4vw, 3.8rem); color: var(--blue); line-height: 1; margin-bottom: 8px; }
+.chapter-rule { width: 100%; height: 1px; background: var(--line); margin: 32px 0 64px; }
+.chapter-intro { font-size: 1rem; color: var(--muted); line-height: 1.8; font-weight: 300; max-width: 580px; margin-bottom: 64px; }
+
+/* ── CARDS ── */
+.card { background: var(--white); padding: 40px; }
+.card-sm { background: var(--white); padding: 28px 32px; }
+.card-blue { background: var(--blue); padding: 40px; }
+.card-dark { background: var(--text); padding: 40px; }
+
+/* ── GRID HELPERS ── */
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+.grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; }
+.grid-4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 2px; }
+.gap-16 { gap: 16px !important; }
+.gap-24 { gap: 24px !important; }
+.gap-32 { gap: 32px !important; }
+.gap-48 { gap: 48px !important; }
+.mb-16 { margin-bottom: 16px; }
+.mb-24 { margin-bottom: 24px; }
+.mb-32 { margin-bottom: 32px; }
+.mb-48 { margin-bottom: 48px; }
+.mb-64 { margin-bottom: 64px; }
+
+/* ── COLORS ── */
+.color-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; margin-bottom: 48px; }
+.swatch { aspect-ratio: 1; position: relative; overflow: hidden; }
+.swatch-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 14px 16px; }
+.swatch-name { font-size: .62rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; margin-bottom: 3px; }
+.swatch-hex { font-size: .72rem; font-weight: 400; opacity: .7; font-family: 'Inter', monospace; }
+.swatch-role { font-size: .58rem; letter-spacing: .1em; text-transform: uppercase; opacity: .5; margin-top: 2px; }
+
+.sw-blue   { background: #28387f; }
+.sw-dark   { background: #1e2c6a; }
+.sw-bg     { background: #F5F5F2; border: 1px solid #e2e2de; }
+.sw-white  { background: #ffffff; border: 1px solid #e2e2de; }
+.sw-text   { background: #1A1A1A; }
+.sw-muted  { background: #6b6b68; }
+.sw-line   { background: #e2e2de; border: 1px solid #d0d0cc; }
+
+.light-text .swatch-name, .light-text .swatch-hex, .light-text .swatch-role { color: var(--text); }
+.dark-text  .swatch-name, .dark-text .swatch-hex, .dark-text .swatch-role   { color: #fff; }
+
+/* ── TYPOGRAPHY ── */
+.type-sample { margin-bottom: 48px; padding-bottom: 48px; border-bottom: 1px solid var(--line); }
+.type-sample:last-child { border-bottom: none; }
+.type-meta { display: flex; gap: 32px; margin-bottom: 20px; }
+.type-meta-item { }
+.type-meta-label { font-size: .58rem; letter-spacing: .18em; text-transform: uppercase; color: #bbb; font-weight: 600; margin-bottom: 3px; }
+.type-meta-val { font-size: .78rem; color: var(--text); font-weight: 500; }
+
+.ts-display { font-family: 'Noordlicht', sans-serif; font-size: 5rem; color: var(--blue); line-height: .9; }
+.ts-hero    { font-family: 'Noordlicht', sans-serif; font-size: 3.5rem; color: var(--blue); line-height: .95; }
+.ts-h2      { font-family: 'Noordlicht', sans-serif; font-size: 2.5rem; color: var(--blue); line-height: 1.05; }
+.ts-h3      { font-family: 'Noordlicht', sans-serif; font-size: 1.8rem; color: var(--blue); line-height: 1.1; }
+.ts-label   { font-size: .68rem; letter-spacing: .22em; text-transform: uppercase; color: var(--blue); font-weight: 600; }
+.ts-nav     { font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 500; color: var(--text); }
+.ts-body    { font-size: 1rem; line-height: 1.85; color: #444; font-weight: 300; max-width: 540px; }
+.ts-small   { font-size: .78rem; color: var(--muted); line-height: 1.5; }
+.ts-price   { font-size: 1.05rem; font-weight: 700; color: var(--blue); }
+.ts-italic  { font-size: 1.1rem; font-style: italic; color: var(--muted); letter-spacing: .08em; }
+
+/* ── SPACING ── */
+.spacing-row { display: flex; align-items: flex-end; gap: 24px; margin-bottom: 48px; }
+.spacing-box { background: rgba(40,56,127,.1); flex-shrink: 0; position: relative; }
+.spacing-label { font-size: .65rem; color: var(--blue); letter-spacing: .1em; margin-top: 8px; font-weight: 600; }
+.spacing-val { font-size: .6rem; color: var(--muted); }
+
+/* ── COMPONENTS ── */
+.comp-label { font-size: .6rem; letter-spacing: .18em; text-transform: uppercase; color: #bbb; font-weight: 600; margin-bottom: 16px; }
+
+/* Button preview */
+.btn-demo {
+  display: inline-flex; align-items: center; gap: 12px;
+  background: var(--blue); color: #fff;
+  text-decoration: none; padding: 17px 44px;
+  font-size: .78rem; letter-spacing: .15em; text-transform: uppercase;
+  font-weight: 600; width: fit-content;
+}
+
+/* Menu card preview */
+.mi-demo {
+  background: var(--bg); padding: 22px 28px;
+  display: flex; justify-content: space-between; align-items: flex-start; gap: 16px;
+}
+.mi-name-d { font-size: .95rem; font-weight: 600; color: var(--text); margin-bottom: 5px; }
+.mi-desc-d { font-size: .78rem; color: var(--muted); line-height: 1.5; }
+.mi-price-d { font-size: 1.05rem; font-weight: 700; color: var(--blue); white-space: nowrap; flex-shrink: 0; }
+
+/* Pill preview */
+.pill-demo {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 18px; border: 1px solid var(--line);
+  font-size: .9rem; font-style: italic; color: var(--blue);
+}
+
+/* Contact item preview */
+.ci-demo {
+  display: flex; align-items: center; gap: 20px;
+  background: var(--white); padding: 22px 26px;
+}
+.ci-icon-d {
+  width: 44px; height: 44px; flex-shrink: 0;
+  background: var(--blue);
+  display: flex; align-items: center; justify-content: center;
+}
+.ci-lbl-d { font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; color: #bbb; margin-bottom: 4px; font-weight: 500; }
+.ci-val-d { font-size: .9rem; color: var(--text); font-weight: 500; }
+
+/* Tab preview */
+.tab-demo { border-bottom: 1px solid var(--line); display: flex; }
+.tab-btn-d {
+  padding: 14px 44px; background: none; border: none;
+  font-size: .78rem; letter-spacing: .15em; text-transform: uppercase;
+  font-weight: 600; color: #aaa; position: relative; cursor: default;
+}
+.tab-btn-d.on { color: var(--blue); }
+.tab-btn-d.on::after {
+  content: ''; position: absolute; bottom: -1px; left: 0; right: 0;
+  height: 2px; background: var(--blue);
+}
+
+/* Section label preview */
+.sec-lbl-demo {
+  font-size: .68rem; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--blue); font-weight: 600;
+  display: flex; align-items: center; gap: 10px;
+}
+.sec-lbl-demo::after { content: ''; display: block; width: 36px; height: 1px; background: var(--blue); }
+
+/* ── DO/DONT ── */
+.do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 48px; }
+.do-box { background: rgba(40,56,127,.06); padding: 32px; border-top: 3px solid var(--blue); }
+.dont-box { background: rgba(220,60,60,.04); padding: 32px; border-top: 3px solid #d43c3c; }
+.do-tag { font-size: .62rem; letter-spacing: .2em; text-transform: uppercase; font-weight: 700; color: var(--blue); margin-bottom: 16px; }
+.dont-tag { font-size: .62rem; letter-spacing: .2em; text-transform: uppercase; font-weight: 700; color: #d43c3c; margin-bottom: 16px; }
+.do-list, .dont-list { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.do-list li, .dont-list li { font-size: .85rem; color: var(--text); line-height: 1.5; padding-left: 18px; position: relative; font-weight: 300; }
+.do-list li::before { content: '✓'; position: absolute; left: 0; color: var(--blue); font-weight: 700; font-size: .75rem; }
+.dont-list li::before { content: '✗'; position: absolute; left: 0; color: #d43c3c; font-weight: 700; font-size: .75rem; }
+
+/* ── LOGO SECTION ── */
+.logo-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; margin-bottom: 48px; }
+.logo-box { padding: 52px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; }
+.logo-box img { max-width: 140px; height: auto; }
+.logo-box-label { font-size: .6rem; letter-spacing: .18em; text-transform: uppercase; color: var(--muted); }
+.logo-box-white { background: var(--white); border: 1px solid var(--line); }
+.logo-box-blue  { background: var(--blue); }
+.logo-box-dark  { background: var(--text); }
+.logo-box-blue .logo-box-label, .logo-box-dark .logo-box-label { color: rgba(255,255,255,.35); }
+
+/* ── PHOTOGRAPHY ── */
+.photo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-bottom: 48px; }
+.photo-box { aspect-ratio: 4/3; background-size: cover; background-position: center; position: relative; overflow: hidden; }
+.photo-box-ext { background-image: url('pictures/exterior.png'); }
+.photo-box-int { background-image: url('pictures/interior.webp'); }
+.photo-box-ph1 { background: linear-gradient(135deg, #e8e0d5 0%, #d4c8b8 100%); display: flex; align-items: center; justify-content: center; }
+.photo-box-ph2 { background: linear-gradient(135deg, #dde3f0 0%, #c8d2e8 100%); display: flex; align-items: center; justify-content: center; }
+.photo-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 16px 20px; background: linear-gradient(to top, rgba(0,0,0,.5), transparent); color: #fff; font-size: .65rem; letter-spacing: .15em; text-transform: uppercase; }
+.photo-placeholder-text { font-size: .75rem; letter-spacing: .15em; text-transform: uppercase; color: var(--muted); }
+
+/* ── ICON USAGE ── */
+.icon-usage-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px; margin-bottom: 48px; }
+.icon-usage-box { background: var(--white); padding: 32px; display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.icon-usage-box img { width: 64px; height: auto; opacity: .15; mix-blend-mode: multiply; }
+.icon-usage-box span { font-size: .58rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); text-align: center; }
+
+/* ── PAGE DIVIDER ── */
+.divider { height: 1px; background: var(--line); margin: 80px 0; }
+.divider-thick { height: 2px; background: var(--blue); margin: 0 0 80px; opacity: .12; }
+
+/* ── SPEC TABLE ── */
+.spec-table { width: 100%; border-collapse: collapse; margin-bottom: 48px; }
+.spec-table th { text-align: left; font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; color: #bbb; font-weight: 600; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.spec-table td { padding: 16px 0; border-bottom: 1px solid var(--line); font-size: .85rem; color: var(--text); vertical-align: top; }
+.spec-table td:first-child { color: var(--blue); font-weight: 600; width: 200px; }
+.spec-table code { font-family: 'Inter', monospace; background: rgba(40,56,127,.07); padding: 2px 8px; font-size: .78rem; color: var(--blue); }
+
+/* ── GRID DETAIL ── */
+.grid-spec { display: grid; grid-template-columns: repeat(12, 1fr); gap: 8px; margin-bottom: 48px; height: 80px; }
+.gs-col { background: rgba(40,56,127,.07); border-radius: 2px; }
+
+/* ── PRINT ── */
+@media print {
+  .cover { min-height: 100vh; page-break-after: always; }
+  .toc-page { page-break-after: always; }
+  .chapter { page-break-before: avoid; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══════════════ COVER ══════════════ -->
+<div class="cover">
+  <div class="cover-top">
+    <span class="cover-label">Brand Guidelines</span>
+    <span class="cover-version">Version 1.0 · 2025</span>
+  </div>
+  <div class="cover-center">
+    <img src="graphics/logo weiss.png" alt="Noordlicht Logo" class="cover-img">
+    <div class="cover-title">NOORDLICHT</div>
+    <div class="cover-sub">Brunch &nbsp;·&nbsp; Coffee &nbsp;·&nbsp; Hygge</div>
+  </div>
+  <div class="cover-bottom">
+    <p class="cover-desc">Dieses Dokument definiert die visuellen und gestalterischen Standards der Marke Noordlicht. Es dient als Referenz für alle kreativen und kommunikativen Massnahmen.</p>
+    <span class="cover-date">Schaffhausen, Schweiz</span>
+  </div>
+</div>
+
+<!-- ══════════════ TOC ══════════════ -->
+<div class="toc-page">
+  <div style="max-width:1100px; margin:0 auto;">
+    <div class="toc-label">Inhalt</div>
+    <div class="toc-title">Index</div>
+    <div class="toc-list">
+      <div class="toc-item"><span class="toc-num">01</span><span class="toc-name">Markenidentität</span><span class="toc-dot"></span></div>
+      <div class="toc-item"><span class="toc-num">02</span><span class="toc-name">Logo</span><span class="toc-dot"></span></div>
+      <div class="toc-item"><span class="toc-num">03</span><span class="toc-name">Farben</span><span class="toc-dot"></span></div>
+      <div class="toc-item"><span class="toc-num">04</span><span class="toc-name">Typografie</span><span class="toc-dot"></span></div>
+      <div class="toc-item"><span class="toc-num">05</span><span class="toc-name">Abstände & Layout</span><span class="toc-dot"></span></div>
+      <div class="toc-item"><span class="toc-num">06</span><span class="toc-name">UI-Komponenten</span><span class="toc-dot"></span></div>
+      <div class="toc-item"><span class="toc-num">07</span><span class="toc-name">Icons & Illustrationen</span><span class="toc-dot"></span></div>
+      <div class="toc-item"><span class="toc-num">08</span><span class="toc-name">Fotografie</span><span class="toc-dot"></span></div>
+      <div class="toc-item"><span class="toc-num">09</span><span class="toc-name">Do's & Don'ts</span><span class="toc-dot"></span></div>
+      <div class="toc-item"><span class="toc-num">10</span><span class="toc-name">Technische Spezifikationen</span><span class="toc-dot"></span></div>
+    </div>
+  </div>
+</div>
+
+<div class="page">
+
+<!-- ══════════════ 01 BRAND IDENTITY ══════════════ -->
+<div class="chapter">
+  <div class="chapter-num">01</div>
+  <div class="chapter-title">Markenidentität</div>
+  <div class="chapter-rule"></div>
+</div>
+
+<div class="grid-2 gap-48 mb-64">
+  <div>
+    <p class="comp-label mb-16">Konzept</p>
+    <p style="font-size:1rem;line-height:1.85;color:#444;font-weight:300;margin-bottom:24px;">Noordlicht ist ein skandinavisch inspiriertes Brunch-Café im Herzen von Schaffhausen. Der Name bedeutet «Nordlicht» – ein Phänomen, das Staunen, Wärme und Entschleunigung verbindet.</p>
+    <p style="font-size:1rem;line-height:1.85;color:#444;font-weight:300;">Die Marke vereint nordische Klarheit mit dem Schweizer Qualitätsanspruch: editoriales Layout, viel Weissraum, durchdachte Typografie und eine zurückhaltende, aber charakterstarke Farbwelt.</p>
+  </div>
+  <div>
+    <p class="comp-label mb-16">Kernwerte</p>
+    <div style="display:flex;flex-direction:column;gap:2px;">
+      <div style="background:var(--white);padding:18px 24px;display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:.92rem;font-weight:500;color:var(--text);">Hygge</span>
+        <span style="font-size:.78rem;color:var(--muted);font-style:italic;">Gemütlichkeit & Wohlbefinden</span>
+      </div>
+      <div style="background:var(--white);padding:18px 24px;display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:.92rem;font-weight:500;color:var(--text);">Qualität</span>
+        <span style="font-size:.78rem;color:var(--muted);font-style:italic;">Handgemacht, frisch, lokal</span>
+      </div>
+      <div style="background:var(--white);padding:18px 24px;display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:.92rem;font-weight:500;color:var(--text);">Klarheit</span>
+        <span style="font-size:.78rem;color:var(--muted);font-style:italic;">Minimalistisch, strukturiert</span>
+      </div>
+      <div style="background:var(--white);padding:18px 24px;display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:.92rem;font-weight:500;color:var(--text);">Wärme</span>
+        <span style="font-size:.78rem;color:var(--muted);font-style:italic;">Einladend, persönlich</span>
+      </div>
+      <div style="background:var(--blue);padding:18px 24px;display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-size:.92rem;font-weight:600;color:#fff;">Eigenständigkeit</span>
+        <span style="font-size:.78rem;color:rgba(255,255,255,.55);font-style:italic;">Charakter & Haltung</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="grid-3 gap-2 mb-64">
+  <div style="background:var(--white);padding:36px;">
+    <div style="font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);font-weight:600;margin-bottom:12px;">Zielgruppe</div>
+    <p style="font-size:.85rem;color:var(--muted);line-height:1.7;font-weight:300;">Urbane Geniesser, 25–45 Jahre. Schätzen Qualität, Atmosphäre und authentischen Geschmack. Affin für Design und Nachhaltigkeit.</p>
+  </div>
+  <div style="background:var(--white);padding:36px;">
+    <div style="font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--blue);font-weight:600;margin-bottom:12px;">Tonalität</div>
+    <p style="font-size:.85rem;color:var(--muted);line-height:1.7;font-weight:300;">Freundlich-klar, nie aufdringlich. Kurze, poetische Sätze. Deutsch als Hauptsprache. Leichter skandinavischer Einschlag in Wortwahl und Stil.</p>
+  </div>
+  <div style="background:var(--blue);padding:36px;">
+    <div style="font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.4);font-weight:600;margin-bottom:12px;">Claim</div>
+    <p style="font-size:1rem;color:#fff;line-height:1.7;font-style:italic;font-weight:300;">«Ein Ort zum Ankommen, Durchatmen und Geniessen.»</p>
+  </div>
+</div>
+
+<!-- ══════════════ 02 LOGO ══════════════ -->
+<div class="chapter">
+  <div class="chapter-num">02</div>
+  <div class="chapter-title">Logo</div>
+  <div class="chapter-rule"></div>
+</div>
+
+<p class="chapter-intro">Das Logo besteht aus dem Schriftzug «Noordlicht» in der proprietären Displayschrift sowie dem Bildzeichen. Es wird in drei Varianten eingesetzt – auf hellem, blauem und dunklem Untergrund.</p>
+
+<div class="logo-grid mb-48">
+  <div class="logo-box logo-box-white">
+    <img src="graphics/logo.png" alt="Logo auf Weiss">
+    <span class="logo-box-label" style="color:var(--muted);">Standard · Heller Untergrund</span>
+  </div>
+  <div class="logo-box logo-box-blue">
+    <img src="graphics/logo weiss.png" alt="Logo auf Blau">
+    <span class="logo-box-label">Weiss · Blauer Untergrund</span>
+  </div>
+  <div class="logo-box logo-box-dark">
+    <img src="graphics/logo weiss.png" alt="Logo auf Dunkel">
+    <span class="logo-box-label">Weiss · Dunkler Untergrund</span>
+  </div>
+</div>
+
+<div class="do-dont mb-64">
+  <div class="do-box">
+    <div class="do-tag">✓ Korrekte Verwendung</div>
+    <ul class="do-list">
+      <li>Logo auf weissem oder sehr hellem Untergrund verwenden</li>
+      <li>Weisse Version auf blauem oder dunklem Untergrund</li>
+      <li>Schutzzone von mindestens der Höhe des «N» einhalten</li>
+      <li>Proportionen immer beibehalten</li>
+      <li>Mindestgrösse: 80px Breite digital / 25mm Print</li>
+    </ul>
+  </div>
+  <div class="dont-box">
+    <div class="dont-tag">✗ Verbotene Verwendung</div>
+    <ul class="dont-list">
+      <li>Logo nicht strecken, quetschen oder verzerren</li>
+      <li>Keine Farbänderungen ausserhalb der definierten Varianten</li>
+      <li>Nicht auf unruhigen, gemusterten Hintergründen</li>
+      <li>Kein Schatten, Outline oder andere Effekte hinzufügen</li>
+      <li>Nicht unter der Mindestgrösse einsetzen</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══════════════ 03 FARBEN ══════════════ -->
+<div class="chapter">
+  <div class="chapter-num">03</div>
+  <div class="chapter-title">Farben</div>
+  <div class="chapter-rule"></div>
+</div>
+
+<p class="chapter-intro">Die Farbpalette ist bewusst reduziert. Primärblau prägt die Marke, unterstützt von einem warmen Off-White und einem tiefen Dunkelton. Akzente entstehen durch Kontrast, nicht durch Farbvielfalt.</p>
+
+<div class="color-grid mb-48">
+  <div class="swatch sw-blue dark-text" style="aspect-ratio:auto;height:220px;">
+    <div class="swatch-info">
+      <div class="swatch-name">Primärblau</div>
+      <div class="swatch-hex">#28387F</div>
+      <div class="swatch-role">Hauptfarbe · Headlines · Buttons</div>
+    </div>
+  </div>
+  <div class="swatch sw-dark dark-text" style="aspect-ratio:auto;height:220px;">
+    <div class="swatch-info">
+      <div class="swatch-name">Blau Dunkel</div>
+      <div class="swatch-hex">#1E2C6A</div>
+      <div class="swatch-role">Hover · Vertiefung</div>
+    </div>
+  </div>
+  <div class="swatch sw-bg light-text" style="aspect-ratio:auto;height:220px;">
+    <div class="swatch-info">
+      <div class="swatch-name">Warm Off-White</div>
+      <div class="swatch-hex">#F5F5F2</div>
+      <div class="swatch-role">Menükarten · Hintergründe</div>
+    </div>
+  </div>
+  <div class="swatch sw-white light-text" style="aspect-ratio:auto;height:220px;">
+    <div class="swatch-info">
+      <div class="swatch-name">Reinweiss</div>
+      <div class="swatch-hex">#FFFFFF</div>
+      <div class="swatch-role">Sektionshintergrund</div>
+    </div>
+  </div>
+  <div class="swatch sw-text dark-text" style="aspect-ratio:auto;height:220px;">
+    <div class="swatch-info">
+      <div class="swatch-name">Text Dunkel</div>
+      <div class="swatch-hex">#1A1A1A</div>
+      <div class="swatch-role">Fliesstext · Footer</div>
+    </div>
+  </div>
+</div>
+
+<div class="color-grid mb-64" style="grid-template-columns:repeat(5,1fr);">
+  <div class="swatch sw-muted dark-text" style="aspect-ratio:auto;height:100px;">
+    <div class="swatch-info">
+      <div class="swatch-name">Gedämpft</div>
+      <div class="swatch-hex">#6B6B68</div>
+    </div>
+  </div>
+  <div class="swatch sw-line light-text" style="aspect-ratio:auto;height:100px;">
+    <div class="swatch-info">
+      <div class="swatch-name">Linie</div>
+      <div class="swatch-hex">#E2E2DE</div>
+    </div>
+  </div>
+  <div style="background:rgba(40,56,127,.1);height:100px;display:flex;align-items:flex-end;padding:14px 16px;">
+    <div><div style="font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--text);">Blue 10%</div><div style="font-size:.72rem;color:var(--muted);">#28387F · 10%</div></div>
+  </div>
+  <div style="background:rgba(40,56,127,.06);height:100px;display:flex;align-items:flex-end;padding:14px 16px;">
+    <div><div style="font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--text);">Blue 6%</div><div style="font-size:.72rem;color:var(--muted);">#28387F · 6%</div></div>
+  </div>
+  <div style="background:rgba(255,255,255,.1);border:1px solid var(--line);height:100px;display:flex;align-items:flex-end;padding:14px 16px;">
+    <div><div style="font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;color:var(--text);">Transparent</div><div style="font-size:.72rem;color:var(--muted);">für Overlays</div></div>
+  </div>
+</div>
+
+<table class="spec-table">
+  <thead><tr><th>Variable</th><th>Hex</th><th>Verwendung</th></tr></thead>
+  <tbody>
+    <tr><td>--blue</td><td><code>#28387f</code></td><td>Überschriften, Buttons, Icons, Akzente, Labels</td></tr>
+    <tr><td>--blue-dark</td><td><code>#1e2c6a</code></td><td>Hover-State auf Buttons und interaktiven Elementen</td></tr>
+    <tr><td>--bg</td><td><code>#F5F5F2</code></td><td>Menükarten, Hintergründe für Cards</td></tr>
+    <tr><td>--white</td><td><code>#ffffff</code></td><td>Sektionshintergründe, Navigation, Hauptflächen</td></tr>
+    <tr><td>--text</td><td><code>#1A1A1A</code></td><td>Primärer Fliesstext, Footer-Hintergrund</td></tr>
+    <tr><td>--muted</td><td><code>#6b6b68</code></td><td>Sekundärtext, Beschreibungen, Untertitel</td></tr>
+    <tr><td>--line</td><td><code>#e2e2de</code></td><td>Trennlinien, Rahmen, Tabellengrenzen</td></tr>
+  </tbody>
+</table>
+
+<!-- ══════════════ 04 TYPOGRAFIE ══════════════ -->
+<div class="chapter">
+  <div class="chapter-num">04</div>
+  <div class="chapter-title">Typografie</div>
+  <div class="chapter-rule"></div>
+</div>
+
+<p class="chapter-intro">Zwei Schriften bilden das typografische System: <strong>Noordlicht</strong> (proprietäre Display-Schrift) für emotionale Hauptaussagen und <strong>Inter</strong> (Google Fonts) für alle Fliess- und UI-Texte.</p>
+
+<!-- Font Specimens -->
+<div class="grid-2 gap-2 mb-48">
+  <div style="background:var(--white);padding:48px;">
+    <div class="comp-label mb-16">Display Schrift</div>
+    <div style="font-family:'Noordlicht',sans-serif;font-size:3.8rem;color:var(--blue);line-height:.9;margin-bottom:24px;">Noordlicht</div>
+    <div style="font-size:.78rem;color:var(--muted);line-height:1.7;font-weight:300;">Datei: <code style="background:var(--bg);padding:2px 6px;font-size:.72rem;">NOORDLICHT.otf</code><br>Format: OpenType<br>Einsatz: Ausschliesslich für Headlines und Brand-Elemente</div>
+  </div>
+  <div style="background:var(--white);padding:48px;">
+    <div class="comp-label mb-16">Body Schrift</div>
+    <div style="font-family:'Inter',sans-serif;font-size:2.2rem;font-weight:700;color:var(--text);line-height:.95;margin-bottom:24px;">Inter</div>
+    <div style="font-size:.78rem;color:var(--muted);line-height:1.7;font-weight:300;">Quelle: <code style="background:var(--bg);padding:2px 6px;font-size:.72rem;">Google Fonts</code><br>Gewichte: 300, 400, 500, 600, 700, 900<br>Einsatz: Navigation, Fliesstext, UI-Elemente, Labels</div>
+  </div>
+</div>
+
+<!-- Type Scale -->
+<div class="type-sample">
+  <div class="type-meta">
+    <div class="type-meta-item"><div class="type-meta-label">Schrift</div><div class="type-meta-val">Noordlicht</div></div>
+    <div class="type-meta-item"><div class="type-meta-label">Grösse</div><div class="type-meta-val">clamp(4.5rem, 11vw, 12rem)</div></div>
+    <div class="type-meta-item"><div class="type-meta-label">Zeilenhöhe</div><div class="type-meta-val">0.88</div></div>
+    <div class="type-meta-item"><div class="type-meta-label">Einsatz</div><div class="type-meta-val">Hero-Titel</div></div>
+  </div>
+  <div style="font-family:'Noordlicht',sans-serif;font-size:clamp(3rem,8vw,7rem);color:var(--blue);line-height:.9;letter-spacing:-.02em;">NOORDLICHT</div>
+</div>
+
+<div class="type-sample">
+  <div class="type-meta">
+    <div class="type-meta-item"><div class="type-meta-label">Schrift</div><div class="type-meta-val">Noordlicht</div></div>
+    <div class="type-meta-item"><div class="type-meta-label">Grösse</div><div class="type-meta-val">clamp(2.4rem, 4.5vw, 4rem)</div></div>
+    <div class="type-meta-item"><div class="type-meta-label">Zeilenhöhe</div><div class="type-meta-val">1.08</div></div>
+    <div class="type-meta-item"><div class="type-meta-label">Einsatz</div><div class="type-meta-val">Section-Titel (h2)</div></div>
+  </div>
+  <div style="font-family:'Noordlicht',sans-serif;font-size:clamp(2rem,4vw,3.2rem);color:var(--blue);line-height:1.05;">Unser Menü</div>
+</div>
+
+<div class="type-sample">
+  <div class="type-meta">
+    <div class="type-meta-item"><div class="type-meta-label">Schrift</div><div class="type-meta-val">Inter</div></div>
+    <div class="type-meta-item"><div class="type-meta-label">Grösse</div><div class="type-meta-val">0.68rem</div></div>
+    <div class="type-meta-item"><div class="type-meta-label">Buchstabenabstand</div><div class="type-meta-val">0.22em</div></div>
+    <div class="type-meta-item"><div class="type-meta-label">Gewicht</div><div class="type-meta-val">600</div></div>
+    <div class="type-meta-item"><div class="type-meta-label">Einsatz</div><div class="type-meta-val">Section-Label, Kategorien</div></div>
+  </div>
+  <div class="sec-lbl-demo">SPEISEKARTE</div>
+</div>
+
+<div class="type-sample">
+  <div class="type-meta">
+    <div class="type-meta-item"><div class="type-meta-label">Schrift</div><div class="type-meta-val">Inter</div></div>
+    <div class="type-meta-item"><div class="type-meta-label">Grösse</div><div class="type-meta-val">0.80rem</div></div>
+    <div class="type-meta-item"><div class="type-meta-label">Buchstabenabstand</div><div class="type-meta-val">0.12em</div></div>
+    <div class="type-meta-item"><div class="type-meta-label">Gewicht</div><div class="type-meta-val">500</div></div>
+    <div class="type-meta-item"><div class="type-meta-label">Einsatz</div><div class="type-meta-val">Navigation</div></div>
+  </div>
+  <div class="ts-nav">Über uns &nbsp; · &nbsp; Menü &nbsp; · &nbsp; Öffnungszeiten &nbsp; · &nbsp; Kontakt</div>
+</div>
+
+<div class="type-sample">
+  <div class="type-meta">
+    <div class="type-meta-item"><div class="type-meta-label">Schrift</div><div class="type-meta-val">Inter</div></div>
+    <div class="type-meta-item"><div class="type-meta-label">Grösse</div><div class="type-meta-val">1.05rem</div></div>
+    <div class="type-meta-item"><div class="type-meta-label">Zeilenhöhe</div><div class="type-meta-val">1.85</div></div>
+    <div class="type-meta-item"><div class="type-meta-label">Gewicht</div><div class="type-meta-val">300</div></div>
+    <div class="type-meta-item"><div class="type-meta-label">Einsatz</div><div class="type-meta-val">Fliesstext</div></div>
+  </div>
+  <div class="ts-body">Ein skandinavisch inspiriertes Café im Herzen von Schaffhausen. Geniesse Spezialitätenkaffee, entspannte Atmosphäre und hausgemachte Speisen.</div>
+</div>
+
+<div class="type-sample">
+  <div class="type-meta">
+    <div class="type-meta-item"><div class="type-meta-label">Schrift</div><div class="type-meta-val">Inter</div></div>
+    <div class="type-meta-item"><div class="type-meta-label">Grösse</div><div class="type-meta-val">1.1rem</div></div>
+    <div class="type-meta-item"><div class="type-meta-label">Stil</div><div class="type-meta-val">Italic</div></div>
+    <div class="type-meta-item"><div class="type-meta-label">Buchstabenabstand</div><div class="type-meta-val">0.08em</div></div>
+    <div class="type-meta-item"><div class="type-meta-label">Einsatz</div><div class="type-meta-val">Subheadline, Zitat</div></div>
+  </div>
+  <div class="ts-italic">Brunch &nbsp;·&nbsp; Coffee &nbsp;·&nbsp; Hygge</div>
+</div>
+
+<table class="spec-table mb-64">
+  <thead><tr><th>Element</th><th>Schrift</th><th>Grösse</th><th>Gewicht</th><th>Farbe</th></tr></thead>
+  <tbody>
+    <tr><td>Hero-Titel</td><td>Noordlicht</td><td>clamp(4.5rem, 11vw, 12rem)</td><td>—</td><td>--blue</td></tr>
+    <tr><td>Section-Titel</td><td>Noordlicht</td><td>clamp(2.4rem, 4.5vw, 4rem)</td><td>700</td><td>--blue</td></tr>
+    <tr><td>Section-Label</td><td>Inter</td><td>0.68rem + 0.22em LS</td><td>600</td><td>--blue</td></tr>
+    <tr><td>Navigation</td><td>Inter</td><td>0.80rem + 0.12em LS</td><td>500</td><td>--text</td></tr>
+    <tr><td>Fliesstext</td><td>Inter</td><td>1.05rem · LH 1.85</td><td>300</td><td>#444</td></tr>
+    <tr><td>Menü-Name</td><td>Inter</td><td>0.95rem</td><td>600</td><td>--text</td></tr>
+    <tr><td>Menü-Beschr.</td><td>Inter</td><td>0.78rem · LH 1.5</td><td>400</td><td>--muted</td></tr>
+    <tr><td>Menü-Preis</td><td>Inter</td><td>1.05rem</td><td>700</td><td>--blue</td></tr>
+    <tr><td>Button</td><td>Inter</td><td>0.78rem + 0.15em LS</td><td>600</td><td>#fff</td></tr>
+    <tr><td>Footer-Copy</td><td>Inter</td><td>0.72rem</td><td>300</td><td>rgba(fff,.25)</td></tr>
+  </tbody>
+</table>
+
+<!-- ══════════════ 05 ABSTÄNDE ══════════════ -->
+<div class="chapter">
+  <div class="chapter-num">05</div>
+  <div class="chapter-title">Abstände & Layout</div>
+  <div class="chapter-rule"></div>
+</div>
+
+<p class="chapter-intro">Das Layout basiert auf einem grosszügigen Weissraum-Prinzip. Alle Sektionen verwenden konsistente Innen- und Aussenabstände, die auf einem 8px-Raster aufgebaut sind.</p>
+
+<div class="mb-48">
+  <p class="comp-label mb-24">Abstands-System</p>
+  <div class="spacing-row">
+    <div>
+      <div class="spacing-box" style="width:4px;height:24px;"></div>
+      <div class="spacing-label">4px</div>
+    </div>
+    <div>
+      <div class="spacing-box" style="width:8px;height:32px;"></div>
+      <div class="spacing-label">8px</div>
+    </div>
+    <div>
+      <div class="spacing-box" style="width:12px;height:40px;"></div>
+      <div class="spacing-label">12px</div>
+    </div>
+    <div>
+      <div class="spacing-box" style="width:16px;height:48px;"></div>
+      <div class="spacing-label">16px</div>
+    </div>
+    <div>
+      <div class="spacing-box" style="width:20px;height:56px;"></div>
+      <div class="spacing-label">20px</div>
+    </div>
+    <div>
+      <div class="spacing-box" style="width:28px;height:64px;"></div>
+      <div class="spacing-label">28px</div>
+    </div>
+    <div>
+      <div class="spacing-box" style="width:40px;height:72px;"></div>
+      <div class="spacing-label">40px</div>
+    </div>
+    <div>
+      <div class="spacing-box" style="width:48px;height:84px;"></div>
+      <div class="spacing-label">48px</div>
+    </div>
+    <div>
+      <div class="spacing-box" style="width:56px;height:96px;"></div>
+      <div class="spacing-label">56px</div>
+    </div>
+    <div>
+      <div class="spacing-box" style="width:64px;height:104px;"></div>
+      <div class="spacing-label">64px</div>
+    </div>
+    <div>
+      <div class="spacing-box" style="width:80px;height:120px;"></div>
+      <div class="spacing-label">80px</div>
+    </div>
+    <div>
+      <div class="spacing-box" style="width:100px;height:140px;"></div>
+      <div class="spacing-label">100px</div>
+    </div>
+    <div>
+      <div class="spacing-box" style="width:120px;height:160px;"></div>
+      <div class="spacing-label">130px</div>
+      <div class="spacing-val">Sektions-Padding</div>
+    </div>
+  </div>
+</div>
+
+<table class="spec-table mb-64">
+  <thead><tr><th>Element</th><th>Wert</th><th>Hinweis</th></tr></thead>
+  <tbody>
+    <tr><td>Section-Padding</td><td><code>130px 80px</code></td><td>Desktop · vertikal / horizontal</td></tr>
+    <tr><td>Section-Padding Tablet</td><td><code>90px 48px</code></td><td>Bis 1100px Breite</td></tr>
+    <tr><td>Section-Padding Mobil</td><td><code>64px 24px</code></td><td>Bis 700px Breite</td></tr>
+    <tr><td>Max-Width Container</td><td><code>1280px</code></td><td>Inhalts-Container, zentriert</td></tr>
+    <tr><td>Navigation-Höhe</td><td><code>72px</code></td><td>Feste Höhe, sticky</td></tr>
+    <tr><td>Grid-Gap (About/Hours)</td><td><code>80–100px</code></td><td>Zwischen zwei Spalten</td></tr>
+    <tr><td>Menü-Karten-Gap</td><td><code>1px</code></td><td>Nahtlose Rastertrennung</td></tr>
+    <tr><td>Menü-Karten-Padding</td><td><code>22px 28px</code></td><td>Innenabstand jeder Karte</td></tr>
+    <tr><td>Button-Padding</td><td><code>17px 44px</code></td><td>Vertikal / horizontal</td></tr>
+  </tbody>
+</table>
+
+<div class="mb-64">
+  <p class="comp-label mb-24">12-Spalten-Raster (1280px Container)</p>
+  <div class="grid-spec">
+    <div class="gs-col"></div><div class="gs-col"></div><div class="gs-col"></div><div class="gs-col"></div>
+    <div class="gs-col"></div><div class="gs-col"></div><div class="gs-col"></div><div class="gs-col"></div>
+    <div class="gs-col"></div><div class="gs-col"></div><div class="gs-col"></div><div class="gs-col"></div>
+  </div>
+  <p style="font-size:.72rem;color:var(--muted);">Spaltenbreite variabel · Rinne 8px · Seitenabstand 80px</p>
+</div>
+
+<!-- ══════════════ 06 KOMPONENTEN ══════════════ -->
+<div class="chapter">
+  <div class="chapter-num">06</div>
+  <div class="chapter-title">UI-Komponenten</div>
+  <div class="chapter-rule"></div>
+</div>
+
+<div class="grid-2 gap-2 mb-48">
+  <!-- Button -->
+  <div style="background:var(--white);padding:40px;">
+    <p class="comp-label mb-24">Button (Primär)</p>
+    <div class="btn-demo">
+      Menü entdecken
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+    </div>
+    <div style="margin-top:24px;display:flex;flex-direction:column;gap:6px;">
+      <div style="font-size:.72rem;color:var(--muted);">Hintergrund: <code style="background:var(--bg);padding:1px 6px;">#28387f</code></div>
+      <div style="font-size:.72rem;color:var(--muted);">Hover: <code style="background:var(--bg);padding:1px 6px;">#1e2c6a</code></div>
+      <div style="font-size:.72rem;color:var(--muted);">Text: <code style="background:var(--bg);padding:1px 6px;">#ffffff</code></div>
+      <div style="font-size:.72rem;color:var(--muted);">Padding: <code style="background:var(--bg);padding:1px 6px;">17px 44px</code></div>
+      <div style="font-size:.72rem;color:var(--muted);">Keine Rundung (border-radius: 0)</div>
+    </div>
+  </div>
+
+  <!-- Tab Navigation -->
+  <div style="background:var(--white);padding:40px;">
+    <p class="comp-label mb-24">Tab-Navigation</p>
+    <div class="tab-demo">
+      <div class="tab-btn-d on">Essen</div>
+      <div class="tab-btn-d">Trinken</div>
+    </div>
+    <div style="margin-top:24px;display:flex;flex-direction:column;gap:6px;">
+      <div style="font-size:.72rem;color:var(--muted);">Aktiv: <code style="background:var(--bg);padding:1px 6px;">--blue</code> + 2px Unterstrich</div>
+      <div style="font-size:.72rem;color:var(--muted);">Inaktiv: <code style="background:var(--bg);padding:1px 6px;">#aaa</code></div>
+      <div style="font-size:.72rem;color:var(--muted);">Schrift: Inter 0.78rem, 600, 0.15em LS</div>
+      <div style="font-size:.72rem;color:var(--muted);">Transition: color + scaleX, 0.3s</div>
+    </div>
+  </div>
+</div>
+
+<div style="background:var(--white);padding:40px;margin-bottom:2px;">
+  <p class="comp-label mb-24">Menü-Karte</p>
+  <div class="grid-2 gap-2">
+    <div>
+      <div style="font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:#bbb;margin-bottom:8px;">Standard</div>
+      <div class="mi-demo">
+        <div>
+          <div class="mi-name-d">KARLSON-BAGEL</div>
+          <div class="mi-desc-d">Bagel mit Speck und Rührei dazu Birchermüesli</div>
+        </div>
+        <div class="mi-price-d">17.0</div>
+      </div>
+    </div>
+    <div>
+      <div style="font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:#bbb;margin-bottom:8px;">Featured (Highlight)</div>
+      <div style="background:var(--blue);padding:22px 28px;display:flex;justify-content:space-between;align-items:flex-start;gap:16px;">
+        <div>
+          <div style="font-size:.95rem;font-weight:600;color:#fff;margin-bottom:5px;">SPASS FÜR 2</div>
+          <div style="font-size:.78rem;color:rgba(255,255,255,.7);line-height:1.5;">2 Cüpli, 2 Kaffee, 4 Gebäck, Rühreier</div>
+        </div>
+        <div style="font-size:1.05rem;font-weight:700;color:#fff;white-space:nowrap;">44.0</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="grid-2 gap-2 mb-48">
+  <div style="background:var(--white);padding:40px;">
+    <p class="comp-label mb-24">Highlight-Pill (About)</p>
+    <div style="display:flex;flex-wrap:wrap;gap:2px;">
+      <div class="pill-demo">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="var(--blue)"><polygon points="8,1 10,6 15,6 11,9.5 12.5,15 8,11.5 3.5,15 5,9.5 1,6 6,6"/></svg>
+        Frühstück · Brunch
+      </div>
+      <div class="pill-demo">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="var(--blue)"><polygon points="8,1 10,6 15,6 11,9.5 12.5,15 8,11.5 3.5,15 5,9.5 1,6 6,6"/></svg>
+        Kaffee · Getränke
+      </div>
+    </div>
+    <div style="margin-top:20px;font-size:.72rem;color:var(--muted);">Border: 1px solid --line · Hover: --bg + --blue border</div>
+  </div>
+  <div style="background:var(--white);padding:40px;">
+    <p class="comp-label mb-24">Kontakt-Zeile</p>
+    <div class="ci-demo">
+      <div class="ci-icon-d">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5" fill="#fff" stroke="none"/></svg>
+      </div>
+      <div>
+        <div class="ci-lbl-d">Instagram</div>
+        <div class="ci-val-d">@noordlicht_schaffhausen</div>
+      </div>
+    </div>
+    <div style="margin-top:12px;font-size:.72rem;color:var(--muted);">Icon-Box: 44×44px · --blue · Hover: translateX(6px)</div>
+  </div>
+</div>
+
+<div style="background:var(--white);padding:40px;margin-bottom:64px;">
+  <p class="comp-label mb-24">Section-Label</p>
+  <div style="display:flex;gap:48px;flex-wrap:wrap;align-items:center;">
+    <div>
+      <div style="font-size:.6rem;color:#bbb;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;">Hell</div>
+      <div class="sec-lbl-demo">SPEISEKARTE</div>
+    </div>
+    <div>
+      <div style="font-size:.6rem;color:#bbb;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;">Auf Blau</div>
+      <div style="background:var(--blue);padding:16px 20px;display:inline-flex;align-items:center;gap:10px;">
+        <span style="font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.45);font-weight:600;">ÖFFNUNGSZEITEN</span>
+        <span style="display:block;width:36px;height:1px;background:rgba(255,255,255,.25);"></span>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:16px;font-size:.72rem;color:var(--muted);">0.68rem · 600 · 0.22em LS · uppercase · mit 36px Linie dahinter</div>
+</div>
+
+<!-- ══════════════ 07 ICONS ══════════════ -->
+<div class="chapter">
+  <div class="chapter-num">07</div>
+  <div class="chapter-title">Icons & Illustrationen</div>
+  <div class="chapter-rule"></div>
+</div>
+
+<p class="chapter-intro">Hand gezeichnete Food-Icons dienen als dekoratives Element im Hintergrund aller Sektionen. Sie verstärken die verspielt-skandinavische Atmosphäre, ohne den Inhalt zu stören.</p>
+
+<div class="icon-usage-grid mb-32">
+  <div class="icon-usage-box">
+    <img src="graphics/icons_fettfett_01.png" alt="">
+    <span>Icon 01</span>
+  </div>
+  <div class="icon-usage-box">
+    <img src="graphics/icons_fettfett_02.png" alt="">
+    <span>Icon 02</span>
+  </div>
+  <div class="icon-usage-box">
+    <img src="graphics/icons_fettfett_03.png" alt="">
+    <span>Icon 03</span>
+  </div>
+  <div class="icon-usage-box">
+    <img src="graphics/icons_fettfett_04.png" alt="">
+    <span>Icon 04</span>
+  </div>
+  <div class="icon-usage-box">
+    <img src="graphics/icons_fettfett_05.png" alt="">
+    <span>Icon 05</span>
+  </div>
+  <div class="icon-usage-box">
+    <img src="graphics/icons_fettfett_06.png" alt="">
+    <span>Icon 06</span>
+  </div>
+  <div class="icon-usage-box">
+    <img src="graphics/icons_fettfett_07.png" alt="">
+    <span>Icon 07</span>
+  </div>
+  <div class="icon-usage-box">
+    <img src="graphics/icons_fettfett_08.png" alt="">
+    <span>Icon 08</span>
+  </div>
+  <div class="icon-usage-box">
+    <img src="graphics/icons_fettfett_09.png" alt="">
+    <span>Icon 09</span>
+  </div>
+  <div class="icon-usage-box" style="background:var(--blue);">
+    <img src="graphics/icons_fettfett_01.png" alt="" style="opacity:.15;mix-blend-mode:screen;">
+    <span style="color:rgba(255,255,255,.4);">Auf Blau</span>
+  </div>
+</div>
+
+<table class="spec-table mb-64">
+  <thead><tr><th>Eigenschaft</th><th>Wert</th></tr></thead>
+  <tbody>
+    <tr><td>Grösse</td><td><code>120px</code> Breite</td></tr>
+    <tr><td>Opacity (Hell)</td><td><code>0.11</code> · mix-blend-mode: multiply</td></tr>
+    <tr><td>Opacity (Blau)</td><td><code>0.15</code> · mix-blend-mode: screen</td></tr>
+    <tr><td>Rotation</td><td>Zufällig ±12° pro Icon</td></tr>
+    <tr><td>Raster horizontal</td><td>220px zwischen Mittelpunkten</td></tr>
+    <tr><td>Raster vertikal</td><td>200px zwischen Mittelpunkten</td></tr>
+    <tr><td>Versatz (gerade Reihen)</td><td>½ Spaltenabstand horizontal</td></tr>
+    <tr><td>Versatz (ungerade Spalten)</td><td>½ Reihenabstand vertikal</td></tr>
+    <tr><td>Reihenfolge</td><td>Zufällig gemischt (Fisher-Yates Shuffle)</td></tr>
+  </tbody>
+</table>
+
+<!-- ══════════════ 08 FOTOGRAFIE ══════════════ -->
+<div class="chapter">
+  <div class="chapter-num">08</div>
+  <div class="chapter-title">Fotografie</div>
+  <div class="chapter-rule"></div>
+</div>
+
+<p class="chapter-intro">Fotografie zeigt Authentizität: echte Momente, natürliches Licht, warme Töne. Keine übersättigten Filter, kein Stockfoto-Look.</p>
+
+<div class="photo-grid mb-48">
+  <div class="photo-box photo-box-ext">
+    <div class="photo-caption">Exterior · Aussenansicht · Fronwagplatz</div>
+  </div>
+  <div class="photo-box photo-box-int">
+    <div class="photo-caption">Interior · Innenansicht · Atmosphäre</div>
+  </div>
+  <div class="photo-box photo-box-ph1">
+    <span class="photo-placeholder-text">Food · Produkte</span>
+  </div>
+  <div class="photo-box photo-box-ph2">
+    <span class="photo-placeholder-text">Details · Hygge-Momente</span>
+  </div>
+</div>
+
+<div class="do-dont mb-64">
+  <div class="do-box">
+    <div class="do-tag">✓ Fotostil</div>
+    <ul class="do-list">
+      <li>Natürliches, weiches Tageslicht bevorzugen</li>
+      <li>Warme, erdige Farbtöne mit leichtem Blaustich</li>
+      <li>Authentische Momente, echte Menschen, echtes Essen</li>
+      <li>Hohe Detailschärfe, weicher Hintergrund (Bokeh)</li>
+      <li>Viel Weissraum und Luft im Bild lassen</li>
+      <li>Hochformat für Social Media, Querformat für Web</li>
+    </ul>
+  </div>
+  <div class="dont-box">
+    <div class="dont-tag">✗ Zu vermeiden</div>
+    <ul class="dont-list">
+      <li>Keine übersättigten oder gefilterten Bilder</li>
+      <li>Kein generischer Stockfoto-Look</li>
+      <li>Keine Bilder mit hartem Direktblitz</li>
+      <li>Kein überladenes Styling, kein Kitsch</li>
+      <li>Keine unruhigen, dunklen Hintergründe</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══════════════ 09 DO / DON'T ══════════════ -->
+<div class="chapter">
+  <div class="chapter-num">09</div>
+  <div class="chapter-title">Do's & Don'ts</div>
+  <div class="chapter-rule"></div>
+</div>
+
+<div class="do-dont mb-32">
+  <div class="do-box">
+    <div class="do-tag">✓ Typografie</div>
+    <ul class="do-list">
+      <li>Noordlicht nur für Headlines und Brand-Texte</li>
+      <li>Inter für alle UI- und Fliess-Texte</li>
+      <li>Grosszügige Buchstabenabstände bei Labels/Buttons</li>
+      <li>Headlines stets in --blue (#28387f)</li>
+      <li>Fliesstext in Gewicht 300 für Leichtigkeit</li>
+    </ul>
+  </div>
+  <div class="dont-box">
+    <div class="dont-tag">✗ Typografie</div>
+    <ul class="dont-list">
+      <li>Keine dritten Schriften einführen</li>
+      <li>Noordlicht nicht für Mengentext verwenden</li>
+      <li>Kein fetteinsatz (700+) bei Fliesstext</li>
+      <li>Headlines nicht in anderen Farben als --blue oder #fff</li>
+    </ul>
+  </div>
+</div>
+
+<div class="do-dont mb-32">
+  <div class="do-box">
+    <div class="do-tag">✓ Farbe</div>
+    <ul class="do-list">
+      <li>Primärblau sparsam und gezielt einsetzen</li>
+      <li>Weissraum als gestalterisches Mittel nutzen</li>
+      <li>Off-White (#F5F5F2) für Karten und Hintergründe</li>
+      <li>Blau als Flächenfarbe für Kontrastsektionen</li>
+    </ul>
+  </div>
+  <div class="dont-box">
+    <div class="dont-tag">✗ Farbe</div>
+    <ul class="dont-list">
+      <li>Keine zusätzlichen Farben ausserhalb der Palette</li>
+      <li>Kein roter oder grüner Akzent</li>
+      <li>Nicht mehrere farbige Flächen nebeneinander</li>
+      <li>Kein Farbverlauf auf Schrift</li>
+    </ul>
+  </div>
+</div>
+
+<div class="do-dont mb-64">
+  <div class="do-box">
+    <div class="do-tag">✓ Allgemein</div>
+    <ul class="do-list">
+      <li>Minimalismus: weniger ist mehr</li>
+      <li>Klare Struktur und Hierarchie</li>
+      <li>Konsistente Rundungslosigkeit (keine border-radius)</li>
+      <li>Subtile Animationen (0.2–0.9s ease)</li>
+      <li>Icons immer im Hintergrund, nie über Content</li>
+    </ul>
+  </div>
+  <div class="dont-box">
+    <div class="dont-tag">✗ Allgemein</div>
+    <ul class="dont-list">
+      <li>Keine abgerundeten Ecken (pill-shapes, etc.)</li>
+      <li>Keine auffälligen Drop-Shadows</li>
+      <li>Keine Elemente ohne Atempause / Weissraum</li>
+      <li>Kein Overload an Animationen</li>
+      <li>Nicht von der Nordlicht-Ästhetik abweichen</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ══════════════ 10 TECHNISCH ══════════════ -->
+<div class="chapter">
+  <div class="chapter-num">10</div>
+  <div class="chapter-title">Technische Spezifikationen</div>
+  <div class="chapter-rule"></div>
+</div>
+
+<div class="grid-2 gap-32 mb-48">
+  <div>
+    <p class="comp-label mb-16">Breakpoints</p>
+    <table class="spec-table">
+      <thead><tr><th>Name</th><th>Breite</th></tr></thead>
+      <tbody>
+        <tr><td>Desktop</td><td><code>&gt; 1100px</code></td></tr>
+        <tr><td>Tablet</td><td><code>900px – 1100px</code></td></tr>
+        <tr><td>Tablet klein</td><td><code>700px – 900px</code></td></tr>
+        <tr><td>Mobil</td><td><code>&lt; 700px</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <p class="comp-label mb-16">Animationen</p>
+    <table class="spec-table">
+      <thead><tr><th>Typ</th><th>Wert</th></tr></thead>
+      <tbody>
+        <tr><td>Scroll-Reveal</td><td><code>opacity + translateY(36px), 0.9s ease</code></td></tr>
+        <tr><td>Tab-Wechsel</td><td><code>fadeUp 0.4s ease</code></td></tr>
+        <tr><td>Hover (Links)</td><td><code>color 0.2s</code></td></tr>
+        <tr><td>Hover (Button)</td><td><code>background 0.3s</code></td></tr>
+        <tr><td>Nav-Shadow</td><td><code>box-shadow 0.4s</code></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<table class="spec-table mb-64">
+  <thead><tr><th>Datei</th><th>Zweck</th><th>Hinweis</th></tr></thead>
+  <tbody>
+    <tr><td>index.html</td><td>Hauptseite</td><td>Semantisches HTML, alle Sektionen</td></tr>
+    <tr><td>style.css</td><td>Alle Styles</td><td>CSS Custom Properties, kein Framework</td></tr>
+    <tr><td>script.js</td><td>Interaktionen</td><td>Vanilla JS: Nav, Tabs, Icons, Reveal</td></tr>
+    <tr><td>NOORDLICHT.otf</td><td>Brand-Schrift</td><td>OpenType, @font-face eingebunden</td></tr>
+    <tr><td>graphics/logo.png</td><td>Logo Standard</td><td>Für helle Hintergründe</td></tr>
+    <tr><td>graphics/logo weiss.png</td><td>Logo Weiss</td><td>Für blaue/dunkle Hintergründe</td></tr>
+    <tr><td>graphics/icons_fettfett_01–09.png</td><td>Dekor-Icons</td><td>Hand gezeichnete Food-Icons</td></tr>
+    <tr><td>pictures/exterior.png</td><td>Hero-Bild</td><td>Aussenansicht Café</td></tr>
+    <tr><td>pictures/interior.webp</td><td>About-Bild</td><td>Innenansicht Café</td></tr>
+  </tbody>
+</table>
+
+<!-- ── BACK COVER ── -->
+</div>
+
+<div class="cover" style="min-height:40vh;justify-content:center;align-items:center;text-align:center;">
+  <div style="position:relative;z-index:1;">
+    <img src="graphics/logo weiss.png" alt="Noordlicht" style="width:100px;margin-bottom:24px;filter:brightness(0) invert(1);opacity:.6;">
+    <div style="font-size:.72rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(255,255,255,.25);">Fronwagplatz 28 · 8200 Schaffhausen · www.noordlicht.com</div>
+    <div style="font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;color:rgba(255,255,255,.15);margin-top:12px;">© 2025 Noordlicht – Brunch · Coffee · Hygge</div>
+  </div>
+</div>
+
+</body>
+</html>
